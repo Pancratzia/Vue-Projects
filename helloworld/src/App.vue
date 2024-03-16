@@ -1,27 +1,34 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <h1>Hello World</h1>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
-
-export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-});
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+/*Estilos Generales del proyecto*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 5rem;
+  font-weight: 900;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
