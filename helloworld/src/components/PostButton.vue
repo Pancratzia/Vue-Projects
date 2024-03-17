@@ -10,14 +10,15 @@
 <style scoped>
 .post-btn {
     text-transform: uppercase;
-    padding: 15px;
+    padding: 5px 15px;
     background-color: blueviolet;
     color: white;
-    border: 0;
+    border: 3px solid blueviolet;
     outline: 0;
 }
 
 .post-btn:hover {
+    cursor: pointer;
     background-color: white;
     color: blueviolet;
 }
