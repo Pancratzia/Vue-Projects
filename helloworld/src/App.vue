@@ -1,6 +1,9 @@
 <template>
 
   <CounterOption />
+
+  <CounterComposition />
+
   <h1>Listado de Posts:</h1>
 
   <PostContainer />
@@ -10,6 +13,7 @@
 <script lang="ts" setup>
 import PostContainer from './components/PostContainer.vue';
 import CounterOption from './components/CounterOption.vue';
+import CounterComposition from './components/CounterComposition.vue';
 </script>
 
 <style>
