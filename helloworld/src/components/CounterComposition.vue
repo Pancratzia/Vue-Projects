@@ -7,30 +7,20 @@
     </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, Ref, ref } from 'vue';
-export default defineComponent({
-    name: 'CounterComposition',
-    components: {},
-    setup() {
-        let counter: Ref<number> = ref(0);
-        const addCounter = (): void => {
-            counter.value++;
-        }
-        const resetCounter = (): void => {
-            counter.value = 0;
-        }
-        const subCounter = (): void => {
-            counter.value--;
-        }
-        return {
-            counter,
-            addCounter,
-            resetCounter,
-            subCounter
-        }
-    }
-})
+<script lang="ts" setup>
+import { Ref, ref } from 'vue';
+
+let counter: Ref<number> = ref(0);
+const addCounter = (): void => {
+    counter.value++;
+}
+const resetCounter = (): void => {
+    counter.value = 0;
+}
+const subCounter = (): void => {
+    counter.value--;
+}
+
 </script>
 
 <style scoped>
@@ -42,7 +32,7 @@ export default defineComponent({
     width: 100%;
 }
 
-h3{
+h3 {
     font-size: 5rem;
     font-weight: 900;
     color: #2c3e50;
