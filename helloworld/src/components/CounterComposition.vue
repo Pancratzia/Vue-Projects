@@ -8,19 +8,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, Ref, ref } from 'vue';
 export default defineComponent({
     name: 'CounterComposition',
     components: {},
     setup() {
-        let counter = ref(0);
-        const addCounter = () => {
+        let counter: Ref<number> = ref(0);
+        const addCounter = (): void => {
             counter.value++;
         }
-        const resetCounter = () => {
+        const resetCounter = (): void => {
             counter.value = 0;
         }
-        const subCounter = () => {
+        const subCounter = (): void => {
             counter.value--;
         }
         return {
