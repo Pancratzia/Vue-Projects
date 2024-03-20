@@ -1,12 +1,14 @@
 <template>
 
-  <CounterOption />
+  <div class="container">
+    <CounterOption />
 
-  <CounterComposition />
+    <CounterComposition />
 
-  <h1>Listado de Posts:</h1>
+    <h1>Listado de Posts:</h1>
 
-  <PostContainer />
+    <PostContainer />
+  </div>
 
 </template>
 
@@ -41,5 +43,13 @@ h1 {
   font-size: 5rem;
   font-weight: 900;
   color: #2c3e50;
+  margin-top: 5rem;
+}
+
+.container {
+  text-align: center;
+  margin: 0 auto;
+  width: min(90%, 1000px);
+
 }
 </style>
