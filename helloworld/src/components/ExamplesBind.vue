@@ -1,6 +1,6 @@
 <template>
     <div class="mensajes">
-        <p :class="{ danger: hasError, success: !hasError }">{{ message }}</p>
+        <p :class="{ danger: hasError, success: !hasError }" v-bind:style="{ backgroundColor: hasError ? 'rgba(255, 0, 0, 0.4)' : 'rgba(0, 255, 0, 0.4)'}">{{ message }}</p>
     </div>
 </template>
 
@@ -20,11 +20,9 @@ const message = hasError ? 'Se ha producido un error' : 'El mensaje se ha enviad
 
 .danger {
     color: red;
-    background-color: rgba(255, 0, 0, 0.4);
 }
 
 .success {
     color: green;
-    background-color: rgba(0, 255, 0, 0.4);
 }
 </style>
