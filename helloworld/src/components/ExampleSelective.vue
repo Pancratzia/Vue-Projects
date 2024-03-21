@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h1 v-show="age >= 18" class="title">Eres mayor de edad</h1>
-        <h1 v-show="age < 18" class="title">Eres menor de edad</h1>
+        <h1 v-if="age >= 18" class="title">Eres mayor de edad</h1>
+        <h1 v-else class="title">Eres menor de edad</h1>
         <h2 class="subtitle">Edad: {{ age }}</h2>
     </div>
 </template>
