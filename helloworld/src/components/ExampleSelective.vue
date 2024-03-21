@@ -6,8 +6,16 @@
     </div>
 </template>
 
-<script lang="ts" setup>
-let age = Math.floor(Math.random() * 100) + 1;
+<script lang="ts">
+    import { defineComponent } from 'vue';
+    export default defineComponent({
+        name: 'ExampleSelective',
+        setup() {
+            let age = Math.floor(Math.random() * 100) + 1;
+
+            return { age };
+        }
+    })
 </script>
 
 <style scoped>
