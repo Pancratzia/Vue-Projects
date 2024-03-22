@@ -24,7 +24,7 @@
             <button @click="addSubject">Anadir</button>
 
             <ul v-if="teacher.subjects.length > 0">
-                <li v-for="(subject, index) in teacher.subjects" :key="index">{{ subject }}</li>
+                <li v-for="(subject, index) in teacher.subjects" :key="index">{{ subject }} <button @click="removeSubject(index)">x</button></li>
             </ul>
         </div>
 
@@ -69,6 +69,10 @@ let subject: Ref<string> = ref('');
 const addSubject = () => {
     teacher.value.subjects.push(subject.value);
     subject.value = '';
+}
+
+const removeSubject = (index: number) => {
+    teacher.value.subjects.splice(index, 1);
 }
 
 </script>
