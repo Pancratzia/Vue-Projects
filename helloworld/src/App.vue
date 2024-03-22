@@ -1,6 +1,9 @@
 <template>
 
   <div class="container">
+
+    <ModelForm />
+
     <CounterOption />
 
     <CounterComposition />
@@ -25,6 +28,7 @@ import CounterComposition from './components/CounterComposition.vue';
 import ExampleSelective from './components/ExampleSelective.vue';
 import ExampleFor from './components/ExampleFor.vue';
 import ExamplesBind from './components/ExamplesBind.vue';
+import ModelForm from './components/ModelForm.vue';
 </script>
 
 <style>
