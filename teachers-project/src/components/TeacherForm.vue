@@ -76,13 +76,17 @@ interface ITeacher {
     doc: boolean;
 }
 
-let teacher: Ref<ITeacher> = ref({
+let initialTeacher: ITeacher = ({
     teacherName: '',
     surnames: '',
     dni: '',
     subjects: [],
     doc: false
 });
+
+let teacher: Ref<ITeacher> = ref({ ...initialTeacher });
+
+
 
 const teachers: Ref<Array<ITeacher>> = ref([]);
 
@@ -98,14 +102,15 @@ const removeSubject = (index: number) => {
 }
 
 const handleAddTeacher = () => {
-    teachers.value.push(teacher.value);
-    teacher.value = {
-        teacherName: '',
-        surnames: '',
-        dni: '',
-        subjects: [],
-        doc: false
-    };
+    teachers.value.push({
+        teacherName: teacher.value.teacherName,
+        surnames: teacher.value.surnames,
+        dni: teacher.value.dni,
+        subjects: teacher.value.subjects,
+        doc: teacher.value.doc
+    });
+    
+    teacher.value = { ...initialTeacher, subjects: [] };
 }
 
 </script>
