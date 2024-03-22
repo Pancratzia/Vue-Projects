@@ -33,11 +33,33 @@
             <label for="documentacionEntregada">Documentación entregada</label>
         </div>
 
-        <button>Guardar</button>
+        <button @click="handleAddTeacher">Guardar</button>
     </section>
 
-    <section>
+    <section v-if="teachers.length > 0">
         <h3>Listado de Profesores</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>DNI / NIF</th>
+                    <th>Materias</th>
+                    <th>Documentación</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr v-for="(teacher, index) in teachers" :key="index">
+                    <td>{{ teacher.teacherName }}</td>
+                    <td>{{ teacher.surnames }}</td>
+                    <td>{{ teacher.dni }}</td>
+                    <td>{{ teacher.subjects.join(', ') }}</td>
+                    <td>{{ teacher.doc ? 'Si' : 'No' }}</td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 
 </template>
@@ -73,6 +95,17 @@ const addSubject = () => {
 
 const removeSubject = (index: number) => {
     teacher.value.subjects.splice(index, 1);
+}
+
+const handleAddTeacher = () => {
+    teachers.value.push(teacher.value);
+    teacher.value = {
+        teacherName: '',
+        surnames: '',
+        dni: '',
+        subjects: [],
+        doc: false
+    };
 }
 
 </script>
