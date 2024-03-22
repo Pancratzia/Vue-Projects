@@ -2,18 +2,39 @@
     <h1>Formulario</h1>
     <form class="form">
         <input class="input" type="text" v-model="inputText" placeholder="Escribe algo...">
+        <p class="text">Texto: {{ inputText }}</p>
         <div class="checkbox">
             <input type="checkbox" name="checkbox" id="checkbox" v-model="agree">
             <label for="checkbox">Acepto los términos y condiciones</label>
         </div>
+
+        <select class="select" name="signoz" id="signoz" v-model="signoz">
+            <option value="Capricornio">Capricornio</option>
+            <option value="Acuario">Acuario</option>
+            <option value="Piscis">Piscis</option>
+            <option value="Aries">Aries</option>
+            <option value="Tauro">Tauro</option>
+            <option value="Géminis">Géminis</option>
+            <option value="Cáncer">Cáncer</option>
+            <option value="Leo">Leo</option>
+            <option value="Virgo">Virgo</option>
+            <option value="Libra">Libra</option>
+            <option value="Escorpio">Escorpio</option>
+            <option value="Sagitario">Sagitario</option>
+        </select>
     </form>
-    <p class="text">Texto: {{ inputText }}</p>
+
 </template>
 
 <script lang="ts" setup>
 import { ref, Ref } from 'vue';
 let inputText: Ref<string> = ref('');
 let agree: Ref<boolean> = ref(false);
+
+const singnoz:Array<string> = ['Capricornio', 'Acuario', 'Piscis', 'Aries', 'Tauro', 'Géminis', 'Cáncer', 'Leo', 'Virgo', 'Libra', 'Escorpio', 'Sagitario'];
+
+let signoz:Ref<string> = ref(singnoz[Math.floor(Math.random() * singnoz.length)]);
+
 </script>
 
 <style scoped>
@@ -69,5 +90,15 @@ let agree: Ref<boolean> = ref(false);
     }
 }
 
-
+.select {
+    padding: 5px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: 0;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: min(90%, 500px);
+    margin-top: 1rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 </style>
