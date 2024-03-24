@@ -1,5 +1,5 @@
 <template>
-  <h1>Hola Mundo</h1>
+  <h6>Hola Mundo from Option API</h6>
 </template>
   
 <script lang="ts">

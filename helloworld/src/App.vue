@@ -4,6 +4,8 @@
 
     <CycleOption />
 
+    <CycleComposition />
+
     <ModelForm />
 
     <CounterOption />
@@ -32,6 +34,7 @@ import ExampleFor from './components/ExampleFor.vue';
 import ExamplesBind from './components/ExamplesBind.vue';
 import ModelForm from './components/ModelForm.vue';
 import CycleOption from './components/CycleOption.vue';
+import CycleComposition from './components/CycleComposition.vue';
 </script>
 
 <style>
