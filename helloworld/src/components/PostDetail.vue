@@ -1,11 +1,26 @@
 <template>
   <div class="post">
-    <h3>Título</h3>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam rem id pariatur explicabo doloribus non, architecto aperiam iste quibusdam eos quasi sint labore, consequatur ipsam vitae minus inventore? Cupiditate, repellendus!</p>
+    <h3>{{ props.title }}</h3>
+    <p>{{ props.content }}</p>
   </div>
 </template>
   
-<script lang="ts" setup>
+<script lang="ts">
+
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'PostDetail',
+  props: {
+    title: {type: String, required: true},
+    content: {type: String, required: false, default: 'Default lorem ipsum dolor sit amet consectetur adipisicing elit. Totam rem id pariatur explicabo doloribus non, architecto aperiam iste quibusdam eos quasi sint labore, consequatur ipsam vitae minus inventore?'},
+  },
+  setup(props) {
+      return {
+          props
+      }
+  }
+})
 </script>
   
 <style scoped>
