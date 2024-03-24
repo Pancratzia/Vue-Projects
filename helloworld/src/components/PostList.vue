@@ -1,6 +1,6 @@
 <template>
     <div class="container-posts">
-        <PostDetail v-for="post in info" :key="post.title" :title= "post.title" :content= "post.content" />
+        <PostDetail v-for="post in info" :key="post.title" :title= "post.title" :content= "post.content" @show-alert="showAlert" />
     </div>
 </template>
 
@@ -33,6 +33,10 @@ let info: Array<Post> = [
         content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, maiores. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, maiores."
     }
 ]
+
+function showAlert(msg: string) {
+    alert(`Mi hijo dice: ${msg}`);
+}
 </script>
 
 <style scoped>
