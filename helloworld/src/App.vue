@@ -20,6 +20,8 @@
 
     <h1>Listado de Posts:</h1>
 
+    <PostList />
+
     <PostContainer />
   </div>
 
@@ -35,6 +37,7 @@ import ExamplesBind from './components/ExamplesBind.vue';
 import ModelForm from './components/ModelForm.vue';
 import CycleOption from './components/CycleOption.vue';
 import CycleComposition from './components/CycleComposition.vue';
+import PostList from './components/PostList.vue';
 </script>
 
 <style>
