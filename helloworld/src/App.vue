@@ -2,6 +2,8 @@
 
   <div class="container">
 
+    <CycleOption />
+
     <ModelForm />
 
     <CounterOption />
@@ -29,6 +31,7 @@ import ExampleSelective from './components/ExampleSelective.vue';
 import ExampleFor from './components/ExampleFor.vue';
 import ExamplesBind from './components/ExamplesBind.vue';
 import ModelForm from './components/ModelForm.vue';
+import CycleOption from './components/CycleOption.vue';
 </script>
 
 <style>
