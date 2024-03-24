@@ -7,34 +7,26 @@
   </div>
 </template>
   
-<script lang="ts">
+<script lang="ts" setup>
+import { ref, defineProps, defineEmits } from 'vue';
 
-import { defineComponent, ref, Ref } from 'vue';
+const props = defineProps({
+  title: { type: String, required: true },
+  content: { type: String, required: false, default: 'Default lorem ipsum dolor sit amet consectetur adipisicing elit.' },
+});
 
-export default defineComponent({
-  name: 'PostDetail',
-  props: {
-    title: {type: String, required: true},
-    content: {type: String, required: false, default: 'Default lorem ipsum dolor sit amet consectetur adipisicing elit. Totam rem id pariatur explicabo doloribus non, architecto aperiam iste quibusdam eos quasi sint labore, consequatur ipsam vitae minus inventore?'},
-  },
-  emits: ['show-alert'],
-  setup(props, {emit}) {
-    const handleClick = (): void => {
-        emit('show-alert', msg.value);
-        msg.value = '';
-    }
+const emit = defineEmits(['show-alert']);
 
-    let msg: Ref<string> = ref('');
+const msg = ref('');
 
-      return {
-          props,
-          handleClick,
-          msg
-      }
-  }
-})
+const handleClick = (): void => {
+  emit('show-alert', msg.value);
+  msg.value = '';
+};
+
+
 </script>
-  
+
 <style scoped>
 
 .post{
