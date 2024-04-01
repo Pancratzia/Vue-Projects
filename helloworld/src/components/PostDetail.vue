@@ -15,12 +15,12 @@ const props = defineProps({
   content: { type: String, required: false, default: 'Default lorem ipsum dolor sit amet consectetur adipisicing elit.' },
 });
 
-const emits = defineEmits(['show-alert']);
+const emit = defineEmits(['show-alert']);
 
 let msg: Ref<string> = ref('');
 
 const handleClick = (): void => {
-  emits('show-alert', msg.value);
+  emit('show-alert', msg.value);
   msg.value = '';
 };
 </script>
