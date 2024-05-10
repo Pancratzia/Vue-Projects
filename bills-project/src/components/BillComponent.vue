@@ -1,13 +1,19 @@
 <template>
-    <div>
+    <div class="container">
 
-        <label for="vat">IVA</label>
-        <input id="vat" type="number" v-model="vat">
+        <h1>Calculadora de IVA</h1>
+
+        <div class="mt">
+            <label for="vat">IVA</label>
+            <input id="vat" type="number" v-model="vat">
+        </div>
 
         <br>
 
-        <label for="subtotal">Subtotal</label>
-        <input id="subtotal" type="number" v-model="subtotal">
+        <div class="mt">
+            <label for="subtotal">Subtotal</label>
+            <input id="subtotal" type="number" v-model="subtotal">
+        </div>
 
         <h3>Total Impuestos a Pagar: {{ totalVat }}$ ({{ vat }}%)</h3>
 
@@ -29,4 +35,26 @@ const total = computed(() => {
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.container {
+    text-align: center
+}
+
+h1 {
+    color: rgb(247, 246, 241);
+}
+
+label {
+    font-weight: bold;
+    margin-right: .5rem;
+}
+
+h3 {
+    color: rgb(255, 138, 138);
+    text-transform: uppercase;
+}
+
+h3:last-child {
+    color: rgb(255, 100, 100);
+}
+</style>
