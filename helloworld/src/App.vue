@@ -4,6 +4,8 @@
 
     <ComputedExample />
 
+    <ComputedCompositionAPI />
+
     <CycleOption />
 
     <CycleComposition />
@@ -41,6 +43,7 @@ import CycleOption from './components/CycleOption.vue';
 import CycleComposition from './components/CycleComposition.vue';
 import PostList from './components/PostList.vue';
 import ComputedExample from './components/ComputedExample.vue';
+import ComputedCompositionAPI from './components/ComputedCompositionAPI.vue';
 </script>
 
 <style>
