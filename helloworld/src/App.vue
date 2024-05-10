@@ -2,6 +2,8 @@
 
   <div class="container">
 
+    <ComputedExample />
+
     <CycleOption />
 
     <CycleComposition />
@@ -38,6 +40,7 @@ import ModelForm from './components/ModelForm.vue';
 import CycleOption from './components/CycleOption.vue';
 import CycleComposition from './components/CycleComposition.vue';
 import PostList from './components/PostList.vue';
+import ComputedExample from './components/ComputedExample.vue';
 </script>
 
 <style>
