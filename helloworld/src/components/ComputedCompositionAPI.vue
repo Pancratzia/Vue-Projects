@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Datos Computados desde CompositionAPI</h2>
+        <h2 v-font-size>Datos Computados desde CompositionAPI</h2>
         <input type="text" v-model="message">
         <h3>{{ message }}</h3>
         <h3>{{ reverseMessage }}</h3>
