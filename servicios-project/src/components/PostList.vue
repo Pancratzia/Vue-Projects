@@ -11,23 +11,15 @@
     </div>
 </template>
 
-<script lang="ts">
-
-import { defineComponent, onMounted } from 'vue';
+<script lang="ts" setup>
 import PostService from '@/services/PostService';
+import { onMounted } from 'vue';
 
-export default defineComponent({
-    name: 'PostList',
-    setup() {
-        const service = new PostService();
-        const posts = service.getPosts();
+const service = new PostService();
+const posts = service.getPosts();
 
-        onMounted(async () => {
-            await service.fetchAll();
-        });
-
-        return { posts };
-    }
+onMounted(async () => {
+    await service.fetchAll();
 });
 </script>
 
