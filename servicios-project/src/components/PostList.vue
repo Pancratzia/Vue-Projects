@@ -4,7 +4,7 @@
 
         <ul>
             <li v-for="post in posts" :key="post.id">
-                <h3>{{ post.title }}</h3>
+                <h3>{{ post.id }} - {{ post.title }}</h3>
                 <p>{{ post.body }}</p>
             </li>
         </ul>
@@ -24,4 +24,36 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+
+    h1{
+        text-transform: uppercase;
+    }
+
+    ul{
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1rem;
+
+        @media screen and (min-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media screen and (min-width: 1024px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    li{
+        border: 5px solid #ccc;
+        padding: .5rem;
+        background-color: #eee;
+
+        & h3{
+            margin-bottom: .5rem;
+            text-transform: uppercase;
+        }
+    }
+
+</style>
