@@ -2,7 +2,7 @@
 
   <div class="container">
 
-    <h1 v-custom-font-size="40">Learning Vue 3 with GOGODEV</h1>
+    <h1 v-custom-font-size="40" v-custom-color:green>Learning Vue 3 with GOGODEV</h1>
     <br>
 
     <ComputedExample />
