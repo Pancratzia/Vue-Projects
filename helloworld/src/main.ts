@@ -37,4 +37,28 @@ app.directive("custom-color", {
   },
 });
 
+app.directive("custom-font", {
+  beforeMount: (el, binding) => {
+    let fw = "normal";
+
+    if (binding.modifiers.bold) {
+      fw = "bold";
+    } else if (binding.modifiers.thin) {
+      fw = "300";
+    } else if (binding.modifiers.bolder) {
+      fw = "bolder";
+    }
+
+    el.style.fontWeight = fw;
+
+    if (binding.modifiers.lineThrough) {
+      el.style.textDecoration = "line-through";
+    } else if (binding.modifiers.underline) {
+      el.style.textDecoration = "underline";
+    } else if (binding.modifiers.overline) {
+      el.style.textDecoration = "overline";
+    }
+  },
+});
+
 app.mount("#app");

@@ -2,7 +2,7 @@
 
   <div class="container">
 
-    <h1 v-custom-font-size="40" v-custom-color:green>Learning Vue 3 with GOGODEV</h1>
+    <h1 v-custom-font-size="40" v-custom-color:green v-custom-font.bolder.underline>Learning Vue 3 with GOGODEV</h1>
     <br>
 
     <ComputedExample />
@@ -25,7 +25,7 @@
 
     <ExamplesBind />
 
-    <h1>Listado de Posts:</h1>
+    <h1 v-custom-font.thin>Listado de Posts:</h1>
 
     <PostList />
 
