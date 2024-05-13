@@ -16,11 +16,12 @@
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 
+
 let postId = ref('');
 
 onMounted(() => {
     const route = useRoute();
-    postId.value = route.params.id;
+    postId.value = route.params.id as string;
 });
 </script>
 
