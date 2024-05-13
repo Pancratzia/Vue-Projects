@@ -16,11 +16,11 @@ body {
   padding: 0;
   margin: 0;
   background-color: aliceblue;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .container{
   width: min(90%, 1200px);
   margin: 0 auto;
-  text-align: center;
 }
 </style>

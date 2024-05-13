@@ -1,8 +1,8 @@
 <template>
     <div>
-        <h1>Post List with Composition API</h1>
+        <h1 class="title">Post List with Composition API</h1>
 
-        <ul>
+        <ul class="post-list">
             <li v-for="post in posts" :key="post.id">
                 <h3>{{ post.id }} - {{ post.title }}</h3>
                 <p>{{ post.body }}</p>
@@ -25,35 +25,43 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.title {
+    text-transform: uppercase;
+    text-align: center;
+    color: rgb(156, 158, 157);
+    text-decoration: underline;
+}
 
-    h1{
-        text-transform: uppercase;
+.post-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+
+    @media screen and (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    ul{
-        list-style: none;
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        gap: 1rem;
-
-        @media screen and (min-width: 768px) {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        @media screen and (min-width: 1024px) {
-            grid-template-columns: repeat(3, 1fr);
-        }
+    @media screen and (min-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
     }
 
-    li{
-        border: 5px solid #ccc;
+    & li {
+        text-align: center;
+        border: 5px solid #4e4979;
         padding: .5rem;
-        background-color: #eee;
+        background-color: #4e49797a;
 
-        & h3{
+        & h3 {
             margin-bottom: .5rem;
             text-transform: uppercase;
+            color: #0e043b;
+        }
+
+        & p {
+            text-align: justify;
+            color: #0e043b;
         }
     }
-
+}
 </style>
