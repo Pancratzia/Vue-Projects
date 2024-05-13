@@ -5,7 +5,7 @@
         <ul class="post-list">
             <li v-for="post in posts" :key="post.id">
                 <h3>{{ post.id }} - {{ post.title }}</h3>
-                <a href="#" class="btn btn-secondary">Read more</a>
+                <router-link :to="{ name: 'Post', params: { id: post.id } }" class="btn btn-secondary">Read more</router-link>
             </li>
         </ul>
     </div>

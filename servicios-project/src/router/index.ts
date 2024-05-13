@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import PostListView from "@/views/PostListView.vue";
+import PostDetailView from "@/views/PostDetailView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "PostList",
     component: PostListView,
+  },
+  {
+    path: "/post/:id",
+    name: "Post",
+    component: PostDetailView,
   }
 ];
 
