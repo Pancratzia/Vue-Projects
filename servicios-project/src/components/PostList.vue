@@ -26,12 +26,10 @@ onMounted(async () => {
 
 <style scoped lang="scss">
 
-$primary-color: #4e4979;
-
 .title {
     text-transform: uppercase;
     text-align: center;
-    color: #0e043b;
+    color: $primary-color;
     text-decoration: underline;
 }
 
@@ -60,12 +58,12 @@ $primary-color: #4e4979;
         h3 {
             margin-bottom: .5rem;
             text-transform: uppercase;
-            color: #0e043b;
+            color: $secondary-color;
         }
 
         p {
             text-align: justify;
-            color: #0e043b;
+            color: $secondary-color;
         }
     }
 }
