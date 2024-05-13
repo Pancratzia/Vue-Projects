@@ -5,7 +5,7 @@ import PostDetailView from "@/views/PostDetailView.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    redirect: "/post",
+    redirect: () => { return { name: "PostList" }},
   },
   {
     path: "/post",
@@ -16,6 +16,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/post/:id",
     name: "Post",
     component: PostDetailView,
+  },
+
+  {
+    path: "/:pathMatch(.*)*",
+    redirect: () => { return { name: "PostList" }},
   }
 ];
 
