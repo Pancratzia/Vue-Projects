@@ -24,7 +24,10 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
+$primary-color: #4e4979;
+
 .title {
     text-transform: uppercase;
     text-align: center;
@@ -48,19 +51,19 @@ onMounted(async () => {
         grid-template-columns: repeat(4, 1fr);
     }
 
-    & li {
+    li {
         text-align: center;
-        border: 5px solid #4e4979;
+        border: 5px solid $primary-color;
         padding: .5rem;
-        background-color: #4e49797a;
+        background-color: lighten($primary-color, 40%);
 
-        & h3 {
+        h3 {
             margin-bottom: .5rem;
             text-transform: uppercase;
             color: #0e043b;
         }
 
-        & p {
+        p {
             text-align: justify;
             color: #0e043b;
         }
