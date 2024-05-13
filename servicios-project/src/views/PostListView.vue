@@ -5,7 +5,6 @@
         <ul class="post-list">
             <li v-for="post in posts" :key="post.id">
                 <h3>{{ post.id }} - {{ post.title }}</h3>
-                <p>{{ post.body }}</p>
                 <a href="#" class="btn btn-secondary">Read more</a>
             </li>
         </ul>
