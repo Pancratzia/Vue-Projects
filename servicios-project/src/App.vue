@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-personal">
     <PostList />
   </div>
 </template>
@@ -19,7 +19,7 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.container{
+.container-personal{
   width: min(90%, 1200px);
   margin: 0 auto;
 }
