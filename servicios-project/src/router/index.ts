@@ -5,6 +5,10 @@ import PostDetailView from "@/views/PostDetailView.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
+    redirect: "/post",
+  },
+  {
+    path: "/post",
     name: "PostList",
     component: PostListView,
   },
