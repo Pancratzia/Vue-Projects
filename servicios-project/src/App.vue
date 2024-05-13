@@ -1,5 +1,7 @@
 <template>
-  <router-view></router-view>
+  <div class="container-personal">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -16,7 +18,7 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.container-personal{
+.container-personal {
   width: min(90%, 1200px);
   margin: 0 auto;
 }
