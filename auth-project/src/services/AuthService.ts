@@ -1,23 +1,23 @@
-import { ref } from "vue";
+import { ref, Ref } from "vue";
 
 class AuthService {
-  private jwt;
-  private error;
+  private jwt: Ref<string>;
+  private error: Ref<string>;
 
   constructor() {
     this.jwt = ref("");
     this.error = ref("");
   }
 
-  get getJwt() {
+  get getJwt(): Ref<string> {
     return this.jwt;
   }
 
-  get getError() {
+  get getError(): Ref<string> {
     return this.error;
   }
 
-  async login(username: string, password: string) {
+  async login(username: string, password: string): Promise<boolean> {
     try {
       const url = "https://dummyjson.com/auth/login";
 
@@ -39,13 +39,12 @@ class AuthService {
         return false;
       }
 
-      if ("token" in data) {
-        this.jwt.value = data.token;
-        return true;
-      }
+      this.jwt.value = data.token;
+      return true;
 
     } catch (error) {
       console.log(error);
+      return false;
     }
   }
 }
