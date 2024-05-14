@@ -18,6 +18,7 @@ class AuthService {
   }
 
   async login(username: string, password: string): Promise<boolean> {
+    let returnSatus = false;
     try {
       const url = "https://dummyjson.com/auth/login";
 
@@ -36,16 +37,16 @@ class AuthService {
 
       if ("message" in data && !("token" in data)) {
         this.error.value = "Login failed";
-        return false;
+      } else if ("token" in data) {
+        this.error.value = "";
+        this.jwt.value = data.token;
+        returnSatus = true;
       }
-
-      this.jwt.value = data.token;
-      return true;
-
     } catch (error) {
-      console.log(error);
-      return false;
+      this.error.value = "Could not connect to server";
     }
+
+    return returnSatus;
   }
 }
 
