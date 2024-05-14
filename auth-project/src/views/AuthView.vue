@@ -1,12 +1,12 @@
 <template>
     <div class="container">
         <h1 class="text-center my-3">Login</h1>
+        <h3 class="text-center">Auth Data Obtained from <a class="link text-decoration-none" href="https://dummyjson.com/docs/auth" target="_blank">dummyJson</a></h3>
         <form>
             <div class="mb-3">
-                <label for="email" class="form-label">Correo</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" v-model="email">
-                <p class="bg-danger text-white px-1 error mt-1" v-if="errors.email">{{ errors.email }}</p>
-                <div id="emailHelp" class="form-text">No compartiremos tu correo con nadie.</div>
+                <label for="username" class="form-label">Usuario</label>
+                <input type="text" class="form-control" id="username" aria-describedby="username" v-model="username">
+                <p class="bg-danger text-white px-1 error mt-1" v-if="errors.username">{{ errors.username }}</p>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Contraseña</label>
@@ -22,11 +22,11 @@
 import { ref } from 'vue';
 
 const initialErrors = {
-    email: '',
+    username: '',
     password: ''
 }
 
-let email = ref('')
+let username = ref('')
 let password = ref('')
 let errors = ref(initialErrors);
 
