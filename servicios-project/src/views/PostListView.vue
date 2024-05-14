@@ -1,13 +1,15 @@
 <template>
-    <div>
-        <h1 class="title">Post List with Composition API</h1>
-
-        <ul class="post-list">
-            <li v-for="post in posts" :key="post.id">
-                <h3>{{ post.id }} - {{ post.title }}</h3>
-                <router-link :to="{ name: 'Post', params: { id: post.id } }" class="btn btn-secondary">Read more</router-link>
-            </li>
-        </ul>
+    <div class="row card-deck">
+        <div v-for="post in posts" :key="post.id" class="card col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 g-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <router-link :to="{ name: 'Post', params: { id: post.id } }" class="btn btn-secondary">Ver Detalle</router-link>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Este post tiene el Id #{{ post.id }}</small>
+            </div>
+        </div>
+        
     </div>
 </template>
 
@@ -25,50 +27,4 @@ onMounted(async () => {
 </script>
 
 <style scoped lang="scss">
-
-.title {
-    text-transform: uppercase;
-    text-align: center;
-    color: $primary-color;
-    text-decoration: underline;
-}
-
-.post-list {
-    list-style: none;
-    display: grid;
-    margin: 0;
-    padding: 0;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 1rem;
-
-    @media screen and (min-width: 768px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media screen and (min-width: 1024px) {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    @media screen and (min-width: 1440px) {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    li {
-        text-align: center;
-        border: 5px solid $primary-color;
-        padding: .5rem;
-        background-color: lighten($primary-color, 40%);
-
-        h3 {
-            margin-bottom: .5rem;
-            text-transform: uppercase;
-            color: $secondary-color;
-        }
-
-        p {
-            text-align: justify;
-            color: $secondary-color;
-        }
-    }
-}
 </style>

@@ -1,6 +1,9 @@
 <template>
-  <div class="container-personal">
-    <router-view></router-view>
+  <div class="bg-dark min-vh-100">
+    <div class="container">
+      <h1 class="text-center text-light py-5">Learning Vue 3 with GOGODEV</h1>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -9,17 +12,4 @@
 
 </script>
 
-<style lang="scss">
-body {
-  min-height: 100vh;
-  padding: 0;
-  margin: 0;
-  background-color: $bg-color;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-.container-personal {
-  width: min(90%, 1200px);
-  margin: 0 auto;
-}
-</style>
+<style lang="scss"></style>
