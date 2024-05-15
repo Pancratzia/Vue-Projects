@@ -13,17 +13,18 @@
 
         <button class="text-center text-uppercase btn btn-dark d-block mx-auto my-3">Login with Github</button>
 
-        <button class="text-center text-uppercase btn btn-info d-block mx-auto my-3">Login with Twitter</button>
+        <button @click="loginWithTwitter" class="text-center text-uppercase btn btn-info d-block mx-auto my-3">Login with Twitter</button>
 
     </div>
 </template>
 
 <script lang="ts" setup>
 
-import { getAuth, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, FacebookAuthProvider, TwitterAuthProvider, signInWithPopup } from "firebase/auth";
 
 const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
+const twitterProvider = new TwitterAuthProvider();
 const auth = getAuth();
 
 const loginWithGoogle = () => {
@@ -46,6 +47,21 @@ const loginWithFacebook = () => {
         .then((result) => {
             console.log(result)
             //const credential = FacebookAuthProvider.credentialFromResult(result);
+            //const token = credential?.accessToken;
+            alert('Login correcto')
+        })
+        .catch((error) => {
+            console.log(error)
+            alert('Login incorrecto')
+        })
+}
+
+const loginWithTwitter = () => {
+
+    signInWithPopup(auth, twitterProvider)
+        .then((result) => {
+            console.log(result)
+            //const credential = TwitterAuthProvider.credentialFromResult(result);
             //const token = credential?.accessToken;
             alert('Login correcto')
         })
