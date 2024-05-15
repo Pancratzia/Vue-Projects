@@ -27,7 +27,9 @@ const auth = getAuth();
 const loginWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
         .then((result) => {
-            console.log(result)
+             console.log(result)
+            //const credential = GoogleAuthProvider.credentialFromResult(result);
+            //const token = credential?.accessToken;
             alert('Login correcto')
         })
         .catch((error) => {
