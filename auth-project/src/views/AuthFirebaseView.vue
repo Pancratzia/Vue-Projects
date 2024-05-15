@@ -3,9 +3,9 @@
         <h1 class="text-center my-3">Login</h1>
         <h3 class="text-center">Auth Login Using <a class="link text-decoration-none" href="https://firebase.google.com"
                 target="_blank">Firebase</a></h3>
-                <h6 class="text-center opacity-75 text-sm">
-                    email: "email@test.com" | password: "12345678"
-                </h6>
+        <h6 class="text-center opacity-75 text-sm">
+            email: "email@test.com" | password: "123456789"
+        </h6>
         <form>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
@@ -24,7 +24,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import AuthService from '@/services/AuthService';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const initialErrors = {
     email: '',
@@ -57,16 +57,15 @@ const authUser = async () => {
 
     if (fe_errors.value.email === '' && fe_errors.value.password === '') {
 
-        const auth = new AuthService();
-        const success = await auth.login(email.value, password.value);
-
-        if (success) {
-            alert('Login correcto')
+        const auth = getAuth();
+        await signInWithEmailAndPassword(auth, email.value, password.value).then(() => {
+            alert('Login correcto');
             email.value = '';
             password.value = '';
-        } else {
-            alert('Login incorrecto')
-        }
+        }).catch((error) => {
+            console.log(error)
+            alert('Login incorrecto');
+        });
     }
 }
 
