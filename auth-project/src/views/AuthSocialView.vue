@@ -4,7 +4,9 @@
         <h3 class="text-center mb-5">Auth Login Using <a class="link text-decoration-none"
                 href="https://firebase.google.com" target="_blank">Firebase</a></h3>
 
-        <button class="text-center text-uppercase btn btn-danger d-block mx-auto my-3">Login with Google</button>
+        <button @click="loginWithGoogle" class="text-center text-uppercase btn btn-danger d-block mx-auto my-3">Login
+            with
+            Google</button>
 
         <button class="text-center text-uppercase btn btn-primary d-block mx-auto my-3">Login with Facebook</button>
 
@@ -16,6 +18,24 @@
 </template>
 
 <script lang="ts" setup>
+
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+
+const googleProvider = new GoogleAuthProvider();
+const auth = getAuth();
+
+const loginWithGoogle = () => {
+    signInWithPopup(auth, googleProvider)
+        .then((result) => {
+            console.log(result)
+            alert('Login correcto')
+        })
+        .catch((error) => {
+            console.log(error)
+            alert('Login incorrecto')
+        })
+}
+
 </script>
 
 <style scoped></style>
