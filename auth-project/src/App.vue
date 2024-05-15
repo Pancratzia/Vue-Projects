@@ -3,9 +3,9 @@
   <div class="nav">
     <router-link :to="{ name: 'home' }">Home</router-link>
     <router-link :to="{ name: 'auth' }">Login</router-link>
+    <router-link :to="{ name: 'firebase' }">Firebase Login</router-link>
   </div>
   <router-view />
-
 </template>
 
 <style lang="scss">

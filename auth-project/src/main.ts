@@ -14,8 +14,6 @@ const firebaseConfig = {
   appId: process.env.VUE_APP_FIREBASE_APPID,
 };
 
-console.log(firebaseConfig);
-
 initializeApp(firebaseConfig);
 
 createApp(App).use(router).mount("#app");
