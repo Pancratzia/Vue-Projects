@@ -3,7 +3,8 @@
   <div class="nav">
     <router-link :to="{ name: 'home' }">Home</router-link>
     <router-link :to="{ name: 'auth' }">Login</router-link>
-    <router-link :to="{ name: 'firebase' }">Firebase Login</router-link>
+    <router-link :to="{ name: 'firebase' }">Firebase</router-link>
+    <router-link :to="{ name: 'social' }">Social</router-link>
   </div>
   <router-view />
 </template>
