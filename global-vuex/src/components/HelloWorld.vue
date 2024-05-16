@@ -9,32 +9,19 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 
-import { defineComponent } from 'vue';
-import { mapMutations, mapGetters, mapState } from 'vuex';
+const store = useStore();
+
+const counter = computed(() => store.state.counter);
+const doubleCounter = computed(() => store.getters.doubleCounter);
+const handleCounterAction = (action: string) => {
+  store.commit('setCounter', action === 'increment' ? counter.value + 1 : action === 'decrement' ? counter.value - 1 : 0);
+};
 
 
-
-export default defineComponent({
-  name: 'HelloWorld',
-  computed: {
-    ...mapState(['counter']),
-    ...mapGetters(['doubleCounter'])
-  },
-  methods: {
-
-    ...mapMutations(['setCounter']),
-    handleCounterAction(action: 'increment' | 'decrement' | 'reset') {
-      this.setCounter(
-        action === 'increment' ? this.counter + 1 :
-          action === 'decrement' ? this.counter - 1 :
-            0
-      );
-    }
-  }
-
-})
 </script>
 
 <style scoped></style>
