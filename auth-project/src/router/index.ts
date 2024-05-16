@@ -3,7 +3,6 @@ import HomeView from '../views/HomeView.vue'
 import AuthView from '@/views/AuthView.vue'
 import AuthFirebaseView from '@/views/AuthFirebaseView.vue'
 import AuthSocialView from '@/views/AuthSocialView.vue'
-import AuthAws from '@/views/AuthAws.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -25,11 +24,6 @@ const routes: Array<RouteRecordRaw> = [
     path: "/social",
     name: "social",
     component: AuthSocialView
-  },
-  {
-    path: "/aws",
-    name: "aws",
-    component: AuthAws
   },
   {
     path: "/:pathMatch(.*)*",
