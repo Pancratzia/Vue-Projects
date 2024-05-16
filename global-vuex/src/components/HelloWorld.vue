@@ -3,7 +3,7 @@
       <h3>Counter</h3>
       <h4>El valor del contador es: {{ counter }} </h4>
       <h4>El valor del {{counter}}x2 es: {{ doubleCounter }}</h4>
-      <button @click?"increment">Incrementar</button>
+      <button @click="increment">Incrementar</button>
     </div>
 </template>
 
@@ -16,15 +16,15 @@ export default defineComponent({
   name: 'HelloWorld',
   computed: {
     counter(){
-      // TODO: Read counter from store
+      return this.$store.state.counter;
     },
     doubleCounter(){
-      // TODO: Read doubleCounter from store
+      return this.$store.getters.doubleCounter;
     }
   },
   methods: {
     increment(){
-      // TODO: Call the setCounter mutation from store
+      this.$store.commit('setCounter',this.counter+1);
     }
   }
 
