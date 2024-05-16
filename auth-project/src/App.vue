@@ -5,6 +5,7 @@
     <router-link :to="{ name: 'auth' }">Login</router-link>
     <router-link :to="{ name: 'firebase' }">Firebase</router-link>
     <router-link :to="{ name: 'social' }">Social</router-link>
+    <router-link :to="{ name: 'aws' }">AWS</router-link>
   </div>
   <router-view />
 </template>
