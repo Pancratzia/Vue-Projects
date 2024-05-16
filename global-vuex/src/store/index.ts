@@ -2,7 +2,7 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    counter: 1
+    counter: 0
   },
   getters: {
     doubleCounter(state) {
