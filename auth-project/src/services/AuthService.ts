@@ -1,4 +1,6 @@
 import { ref, Ref } from "vue";
+import { inject } from "vue";
+import { VueCookies } from "vue-cookies";
 
 class AuthService {
   private jwt: Ref<string>;
@@ -30,6 +32,7 @@ class AuthService {
         body: JSON.stringify({
           username: username,
           password: password,
+          expiresInMins: 60*24, // 24 hours
         }),
       });
 
@@ -38,8 +41,10 @@ class AuthService {
       if ("message" in data && !("token" in data)) {
         this.error.value = "Login failed";
       } else if ("token" in data) {
+        const $cookies = inject<VueCookies>('$cookies'); 
         this.error.value = "";
         this.jwt.value = data.token;
+        $cookies?.set('auth', data.token);
         returnSatus = true;
       }
     } catch (error) {
