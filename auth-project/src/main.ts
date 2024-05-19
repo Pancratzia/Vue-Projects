@@ -4,6 +4,7 @@ import router from "./router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 import { initializeApp } from "firebase/app";
+import VueCookies from "vue-cookies";
 
 const firebaseConfig = {
   apiKey: process.env.VUE_APP_FIREBASE_APIKEY,
@@ -16,4 +17,4 @@ const firebaseConfig = {
 
 initializeApp(firebaseConfig);
 
-createApp(App).use(router).mount("#app");
+createApp(App).use(router).use(VueCookies, { expires: "1d" }).mount("#app");
