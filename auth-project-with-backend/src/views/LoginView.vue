@@ -12,6 +12,9 @@
       </div>
       <button type="submit" class="btn btn-primary mt-2">Log In</button>
     </form>
+
+    <p class="mt-3">¿No tienes una cuenta? <router-link :to="{ name: 'register' }">Registrate</router-link></p>
+    
   </div>
 </template>
 
