@@ -15,21 +15,33 @@ const routes: Array<RouteRecordRaw> = [
     path: "/notes",
     name: "noteList",
     component: NoteListView,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: "/login",
     name: "login",
     component: LoginView,
+    meta: {
+      requiresAuth: false,
+    },
   },
   {
     path: "/register",
     name: "register",
     component: RegisterView,
+    meta: {
+      requiresAuth: false,
+    },
   },
   {
     path: "/notes/create",
     name: "create",
     component: NoteCreateView,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: "/:pathMatch(.*)*",
@@ -42,6 +54,10 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  // TODO: Check if user is authenticated
 });
 
 export default router;
