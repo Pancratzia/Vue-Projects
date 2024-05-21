@@ -12,7 +12,7 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: "/note",
+    path: "/notes",
     name: "noteList",
     component: NoteListView,
   },
