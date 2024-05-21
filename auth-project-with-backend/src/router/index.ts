@@ -3,6 +3,7 @@ import LoginView from "@/views/LoginView.vue";
 import RegisterView from "@/views/RegisterView.vue";
 import NoteCreateView from "@/views/NoteCreateView.vue";
 import NoteListView from "@/views/NoteListView.vue";
+import useAuth from "@/store/auth";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -57,7 +58,15 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  // TODO: Check if user is authenticated
+  const auth = useAuth();
+
+  const isAuth = auth.token;
+
+  if (to.meta.requiresAuth && isAuth === null) {
+    next({ name: "login" });
+  } else {
+    next();
+  }
 });
 
 export default router;
