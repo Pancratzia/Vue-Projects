@@ -25,6 +25,11 @@
 
 
     const createNote = async (): Promise<void> => {
+
+      if (content.value === '') {
+        alert('Por favor, rellena todos los campos');
+        return;  
+      }
         const response = await store.createNote(content.value);
         if (response) {
           alert(store.message);
