@@ -41,8 +41,10 @@ const useAuth = defineStore("auth", {
       }
     },
     async login(email: string, password: string) {
-      const uri = `${this.baseUrl}/login`;
+      const uri = `${this.baseUrl}/auth/login`;
 
+      try {
+        
       const rawResponse = await fetch(uri, {
         method: "POST",
         headers: {
@@ -56,7 +58,18 @@ const useAuth = defineStore("auth", {
 
       const response = await rawResponse.json();
 
-      // TODO: Manage response
+      if (response.status === false) {
+        this.message = response.message;
+        return false;
+      } else {
+        this.token = response.token;
+        this.message = response.message;
+        return true;
+      }
+      } catch (error) {
+        this.message = "Error inesperado";
+        return false;
+      }
     },
     async getNotes() {
       const uri = `${this.baseUrl}/note`;

@@ -1,5 +1,7 @@
 <template>
     <div class="container my-5">
+
+        <button class="btn btn-primary mx-auto d-block" @click="logout">Log Out</button>
         <table class="table">
             <thead>
                 <tr>
@@ -32,3 +34,19 @@
         </table>
     </div>
 </template>
+
+<script lang="ts" setup>
+
+import  useAuth from '@/store/auth';
+import { useRouter } from 'vue-router';
+
+const store = useAuth();
+const router = useRouter();
+
+
+const logout = (): void  => {
+    store.logout();
+    router.push({ name: 'login' });
+};
+
+</script>
