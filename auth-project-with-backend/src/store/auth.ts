@@ -5,27 +5,40 @@ const useAuth = defineStore("auth", {
     return {
       token: null,
       baseUrl: "http://127.0.0.1:8000/api",
+      message: "",
     };
   },
   actions: {
     async register(name: string, email: string, password: string) {
-      const uri = `${this.baseUrl}/register`;
+      const uri = `${this.baseUrl}/auth/register`;
+      
+      try {
+        const rawResponse = await fetch(uri, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            password: password,
+          }),
+        });
 
-      const rawResponse = await fetch(uri, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          password: password,
-        }),
-      });
+        const response = await rawResponse.json();
 
-      const response = await rawResponse.json();
-
-      // TODO: Manage response
+        if (response.status === false) {
+          this.message = response.message;
+          return false;
+        } else {
+          this.token = response.token;
+          this.message = response.message;
+          return true;
+        }
+      } catch (error) {
+        this.message = "Error inesperado";
+        return false;
+      }
     },
     async login(email: string, password: string) {
       const uri = `${this.baseUrl}/login`;
@@ -79,6 +92,9 @@ const useAuth = defineStore("auth", {
       const response = await rawResponse.json();
 
       // TODO: Manage response
+    },
+    logout() {
+      this.token = null;
     },
   },
 });
