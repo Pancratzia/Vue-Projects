@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 const useAuth = defineStore("auth", {
   state: () => {
     return {
-      token: null,
+      token: sessionStorage.getItem("token") || null,
       baseUrl: "http://127.0.0.1:8000/api",
       message: "",
     };
@@ -32,6 +32,7 @@ const useAuth = defineStore("auth", {
           return false;
         } else {
           this.token = response.token;
+          sessionStorage.setItem("token", this.token || "");
           this.message = response.message;
           return true;
         }
@@ -63,6 +64,7 @@ const useAuth = defineStore("auth", {
         return false;
       } else {
         this.token = response.token;
+        sessionStorage.setItem("token", this.token || "");
         this.message = response.message;
         return true;
       }
@@ -108,8 +110,9 @@ const useAuth = defineStore("auth", {
     },
     logout() {
       this.token = null;
+      sessionStorage.removeItem("token");
     },
-  },
+  }
 });
 
 export default useAuth;
