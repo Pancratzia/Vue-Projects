@@ -1,3 +1,4 @@
+
 import { defineStore } from "pinia";
 
 const useAuth = defineStore("auth", {
@@ -76,37 +77,50 @@ const useAuth = defineStore("auth", {
     async getNotes() {
       const uri = `${this.baseUrl}/note`;
 
-      const rawResponse = await fetch(uri, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${this.token}`,
-        },
-      });
+      try{
+        const rawResponse = await fetch(uri, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${this.token}`,
+          },
+        });
+  
+        const response = await rawResponse.json();
 
-      const response = await rawResponse.json();
+        return response || [];
 
-      // TODO: Manage response
+      }catch(error){
+        console.log(error);
+        return [];
+      }
     },
-    async createNotes(content: string) {
+    async createNote(content: string) {
       const uri = `${this.baseUrl}/note`;
 
-      const rawResponse = await fetch(uri, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${this.token}`,
-        },
-        body: JSON.stringify({
-          content: content,
-        }),
-      });
+      try{
+        const rawResponse = await fetch(uri, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${this.token}`,
+          },
+          body: JSON.stringify({
+            content: content,
+          }),
+        });
+  
+        const response = await rawResponse.json();
+        this.message = response.message;
+        return response || [];
+      }catch(error){
+        this.message = "Error inesperado";
+        return [];
+      }
 
-      const response = await rawResponse.json();
-
-      // TODO: Manage response
+      
     },
     logout() {
       this.token = null;

@@ -38,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/notes/create",
-    name: "createList",
+    name: "createNote",
     component: NoteCreateView,
     meta: {
       requiresAuth: true,

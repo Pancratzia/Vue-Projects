@@ -1,50 +1,52 @@
 <template>
     <div class="container my-5">
 
-        <button class="btn btn-primary mx-auto d-block" @click="logout">Log Out</button>
-        <table class="table">
+        <button class="btn btn-primary mx-auto d-block my-5" @click="logout">Log Out</button>
+        <table class="table" v-if="notes.length > 0">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Note</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
+                <tr v-for="note in notes" :key="note.id">
+                    <th scope="row">{{ note.id }}</th>
+                    <td>{{ note.content }}</td>
                 </tr>
             </tbody>
         </table>
+
+        <p v-else class="text-center">No notes yet. 
+        </p>
+
+        <router-link :to="{ name: 'createNote' }">Create Note</router-link>
     </div>
 </template>
 
 <script lang="ts" setup>
 
-import  useAuth from '@/store/auth';
+import useAuth from '@/store/auth';
 import { useRouter } from 'vue-router';
+import { ref, Ref } from 'vue';
+import INote from '@/interfaces/INote';
+
+
+let notes: Ref<Array<INote>> = ref([]);
 
 const store = useAuth();
 const router = useRouter();
 
+const getNotes = async (): Promise<void> => {
+    const response = await store.getNotes();
+    if (response) {
+        notes.value = response;
+    }
+};
 
-const logout = (): void  => {
+getNotes();
+
+const logout = (): void => {
     store.logout();
     router.push({ name: 'login' });
 };
