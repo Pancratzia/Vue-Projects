@@ -4,12 +4,18 @@
       <AuxBar />
     </div>
 
-    <div class="main-content-container row container mx-auto">
-      <div class="menu col-12 col-md-4">
-        <MenuSideBar />
+    <div class="container mx-auto">
+      <div class="main-content-container row">
+        <div class="menu col-12 col-md-4">
+          <MenuSideBar />
+        </div>
+        <div class="main-content col-12 col-md-8">
+          <slot name="main"></slot>
+        </div>
       </div>
-      <div class="main-content col-12 col-md-8">
-        <slot></slot>
+
+      <div class="aux-content">
+        <slot name="aux"></slot>
       </div>
     </div>
   </div>
@@ -22,8 +28,8 @@ import MenuSideBar from '@/components/MenuSideBar.vue';
 
 </script>
 
-<style scoped>  
-  .main-layout{
-    min-height: 100vh;
-  }
+<style scoped>
+.main-layout {
+  min-height: 100vh;
+}
 </style>
