@@ -5,6 +5,10 @@
     </template>
 
     <template v-slot:aux>
+      <div class="card">
+        <p>Position X: {{ x }} </p>
+        <p>Position Y: {{ y }} </p>
+      </div>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, reprehenderit molestias pariatur, molestiae
         eligendi accusantium vero perferendis odio fuga qui quo, quibusdam cupiditate suscipit ut similique cum corporis
         omnis quod ducimus autem. Inventore, accusantium numquam id dignissimos odio adipisci harum eius! Molestiae
@@ -26,22 +30,8 @@
 
 <script lang="ts" setup>
 import MainLayout from '@/layouts/MainLayout.vue';
-import { ref, onMounted, onUnmounted } from 'vue';
+import { useMouse } from '@/composables/useMouse';
 
-const x = ref(0);
-const y = ref(0);
-
-function updateCursorPosition(event: MouseEvent) {
-  x.value = event.pageX;
-  y.value = event.pageY;
-}
-
-onMounted(() => {
-  window.addEventListener('mousemove', updateCursorPosition);
-});
-
-onUnmounted(() => {
-  window.removeEventListener('mousemove', updateCursorPosition);
-});
+const { x, y } = useMouse();
 
 </script>
