@@ -1,6 +1,6 @@
 <template>
   <MainLayout>
-    <h1>My Home Content</h1>
+    <h2>My Home Content</h2>
   </MainLayout>
 </template>
 
