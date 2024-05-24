@@ -2,7 +2,7 @@
     <div>
         <h1>Card Layout</h1>
 
-        <div class="container">
+        <div class="cards">
             <UserCard v-for="item in props.content" :key="item.name" :content="item" />
         </div>
     </div>
@@ -18,4 +18,19 @@
 </script>
 
 <style scoped>
+
+h1 {
+    color: blueviolet;
+    margin: 1rem 0;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+    border: 2px solid blueviolet;
+    padding: 10px;
+}
+
 </style>

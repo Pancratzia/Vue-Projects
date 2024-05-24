@@ -12,4 +12,9 @@ import { defineProps } from 'vue';
 const props = defineProps(['content']);
 </script>
 
-<style scoped></style>
+<style scoped>
+
+    tr {
+        border-bottom: 1px solid #ccc;
+    }
+</style>

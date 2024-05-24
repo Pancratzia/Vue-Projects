@@ -29,4 +29,27 @@ const props = defineProps(['content']);
 
 </script>
 
-<style scoped></style>
+<style scoped>
+
+h1 {
+    color: blueviolet;
+    margin: 1rem 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    border: .5rem solid #34495e;
+    
+    & thead {
+        background-color: #34495e;
+        color: white;
+
+        & th {
+            padding: .5rem;
+        }
+    }
+}
+
+</style>

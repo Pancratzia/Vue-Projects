@@ -11,4 +11,10 @@ import { defineProps } from 'vue';
 const props = defineProps(['content']);
 </script>
 
-<style scoped></style>
+<style scoped>
+.card {
+    border: 3px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+</style>

@@ -1,13 +1,15 @@
 <template>
-  <h1>Listado de Usuarios</h1>
+  <div class="container main">
+    <h1>Listado de Usuarios</h1>
 
-  <div>
-    <button @click="handleLayout(ListLayout)">Ver en Lista</button>
-    <button @click="handleLayout(CardLayout)">Ver en Tarjeta</button>
-    <button @click="handleLayout(TableLayout)">Ver en Tabla</button>
+    <div class="buttons">
+      <button @click="handleLayout(ListLayout)">Ver en Lista</button>
+      <button @click="handleLayout(CardLayout)">Ver en Tarjeta</button>
+      <button @click="handleLayout(TableLayout)">Ver en Tabla</button>
+    </div>
+
+    <component :is="layout" :content="users"></component>
   </div>
-
-  <component :is="layout" :content="users"></component>
 </template>
 
 <script lang="ts" setup>
@@ -17,7 +19,7 @@ const CardLayout = defineAsyncComponent(() => import("@/layouts/CardLayout.vue")
 const TableLayout = defineAsyncComponent(() => import("@/layouts/TableLayout.vue"));
 
 
-const layout:Ref<Component> = ref(ListLayout);
+const layout: Ref<Component> = ref(ListLayout);
 
 const handleLayout = (cmp: Component) => layout.value = cmp;
 
@@ -34,3 +36,34 @@ const users = ref([
   { name: "Paola", age: 31, position: "backend" },
 ]);
 </script>
+
+<style scoped>
+
+.main{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.buttons{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+
+  & button{
+    padding: 5px 15px;
+    background-color: blueviolet;
+    color: white;
+    border: 3px solid blueviolet;
+    outline: 0;
+    border-radius: 5px;
+    font-weight: bold;
+
+    &:hover{
+      background-color: white;
+      color: blueviolet;
+      cursor: pointer;
+    }
+  }
+}
+</style>
