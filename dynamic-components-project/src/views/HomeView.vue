@@ -2,7 +2,7 @@
   <div class="container main">
     <h1>Listado de Usuarios</h1>
 
-    <input type="text" placeholder="Filtrar por Usuarios" v-model="search" @keyup="handleSearch">
+    <input type="text" placeholder="Filtrar por Usuario, Edad o Posición" v-model="search" @keyup="handleSearch">
 
     <div class="buttons">
       <button @click="handleLayout(ListLayout)">Ver en Lista</button>
@@ -43,7 +43,7 @@ const filteredUsers = ref(users.value);
 
 const handleSearch = () => {
   if(search.value.length > 0){
-    filteredUsers.value = users.value.filter(user => user.name.toLowerCase().includes(search.value.toLowerCase()));
+    filteredUsers.value = users.value.filter(user => user.name.includes(search.value) || user.age.toString().includes(search.value) || user.position.includes(search.value));
   } else {
     filteredUsers.value = users.value;
   }
