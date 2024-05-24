@@ -2,7 +2,7 @@
 
   <ul>
     <TransitionGroup name="list" tag="ul">
-      <li v-for="note in notes" :key="note"><v-icon name="bi-file-code-fill"/> {{ note }}</li>
+      <li v-for="note in notes" :key="note"><v-icon name="bi-file-code-fill" scale="1.3" color="green" animation="pulse" title="my-icon" /> {{ note }}</li>
     </TransitionGroup>
   </ul>
 
