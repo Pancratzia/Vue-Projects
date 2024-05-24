@@ -1,28 +1,43 @@
 <template>
 
-  <button @click="show = !show">Mostrar/Ocultar</button>
-  <Transition>
-    <h1 v-if="show">Hello World</h1>
-  </Transition>
+  <ul>
+    <TransitionGroup name="list" tag="ul">
+      <li v-for="note in notes" :key="note">{{ note }}</li>
+    </TransitionGroup>
+  </ul>
+
+  <input v-model="note" type="text" placeholder="Escribe algo...">
+  <button @click="handleNote">Save Note</button>
+
 </template>
 
 
 <script lang="ts" setup>
- import {ref} from 'vue';
 
- const show = ref(false);
+import { ref, Ref } from 'vue';
+
+const notes: Ref<string[]> = ref([]);
+const note: Ref<string> = ref<string>('');
+
+const handleNote = (): void => {
+  notes.value.push(note.value);
+  note.value = '';
+}
 
 </script>
 
 
 <style scoped>
 
-.v-enter-active, .v-leave-active{
-  transition: opacity 1s ease;
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
 }
 
-.v-enter-from, .v-leave-to {
+.list-enter-from,
+.list-leave-to {
   opacity: 0;
+  transform: translateX(30px);
 }
 
 </style>
