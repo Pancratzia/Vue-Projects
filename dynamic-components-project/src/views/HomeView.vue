@@ -2,13 +2,15 @@
   <div class="container main">
     <h1>Listado de Usuarios</h1>
 
+    <input type="text" placeholder="Filtrar por Usuarios" v-model="search" @keyup="handleSearch">
+
     <div class="buttons">
       <button @click="handleLayout(ListLayout)">Ver en Lista</button>
       <button @click="handleLayout(CardLayout)">Ver en Tarjeta</button>
       <button @click="handleLayout(TableLayout)">Ver en Tabla</button>
     </div>
 
-    <component :is="layout" :content="users"></component>
+    <component :is="layout" :content="filteredUsers"></component>
   </div>
 </template>
 
@@ -17,12 +19,6 @@ import { Ref, ref, defineAsyncComponent, Component } from 'vue';
 const ListLayout = defineAsyncComponent(() => import("@/layouts/ListLayout.vue"));
 const CardLayout = defineAsyncComponent(() => import("@/layouts/CardLayout.vue"));
 const TableLayout = defineAsyncComponent(() => import("@/layouts/TableLayout.vue"));
-
-
-const layout: Ref<Component> = ref(ListLayout);
-
-const handleLayout = (cmp: Component) => layout.value = cmp;
-
 
 const users = ref([
   { name: "Pancratzia", age: 24, position: "frontend" },
@@ -35,6 +31,26 @@ const users = ref([
   { name: "Eduardo", age: 30, position: "frontend" },
   { name: "Paola", age: 31, position: "backend" },
 ]);
+
+
+const search = ref('');
+
+const layout: Ref<Component> = ref(ListLayout);
+
+const handleLayout = (cmp: Component) => layout.value = cmp;
+
+const filteredUsers = ref(users.value);
+
+const handleSearch = () => {
+  if(search.value.length > 0){
+    filteredUsers.value = users.value.filter(user => user.name.toLowerCase().includes(search.value.toLowerCase()));
+  } else {
+    filteredUsers.value = users.value;
+  }
+}
+
+
+
 </script>
 
 <style scoped>
@@ -65,5 +81,16 @@ const users = ref([
       cursor: pointer;
     }
   }
+}
+
+input{
+  padding: 5px 15px;
+  margin: 1rem 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: 0;
+  font-size: 16px;
+  width: min(90%, 500px);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 </style>
