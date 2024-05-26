@@ -9,6 +9,9 @@ export const useExample = defineStore('example', {
             action === 'increment' ? this.counter++ : action === 'decrement' ? this.counter-- : (this.counter = 0);
         },
     },
-    persist: true,
+    persist: {
+        storage: sessionStorage,
+        paths: ['counter'],
+    }
 
 })
