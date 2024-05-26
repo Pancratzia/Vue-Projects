@@ -1,30 +1,20 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+
+  <div class="container mx-auto text-center my-3">
+    <h1>Counter: {{ store.counter }} </h1>
+
+    <div class="d-flex justify-content-center align-items-center my-3 gap-3">
+      <button class="btn btn-primary" @click="store.setCounter('increment')">Increment</button>
+      <button class="btn btn-danger" @click="store.setCounter('decrement')">Decrement</button>
+      <button class="btn btn-warning" @click="store.setCounter('reset')">Reset</button>
+    </div>
+  </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-nav {
-  padding: 30px;
-}
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+<script lang="ts" setup>
+import { useExample } from './store/useExample';
 
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+const store = useExample();
+</script>
