@@ -17,4 +17,6 @@
 import { useExample } from './store/useExample';
 
 const store = useExample();
+
+store.init();
 </script>
