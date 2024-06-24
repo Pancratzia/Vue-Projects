@@ -5,16 +5,17 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, Ref, defineExpose } from 'vue';
+import { ref, Ref, defineExpose } from 'vue';
 
 const percentage: Ref<number> = ref(0);
 
-onMounted(() => {
-    percentage.value = ref(25);
-})
 
-const recalculate = () => {
-    percentage.value = 50;
+const recalculate = (value) => {
+    percentage.value = value;
+
+    if (percentage.value >= 100) {
+        alert('Tarea completada');
+    }
 }
 
 defineExpose({ recalculate });
