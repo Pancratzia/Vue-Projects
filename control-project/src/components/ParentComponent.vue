@@ -3,9 +3,9 @@
 
         <img alt="Lorem picsum big picture to understand how v-lazy works" width="500" height="auto" v-lazy="{
             src: 'https://picsum.photos/4000/2000',
-            error: 'notfound.png',
+            delay: 500,
             loading: 'loading.gif',
-            delay: 500
+            error: 'notfound.png'
         }">
 
         <ChildComponent ref="percentageComponent"></ChildComponent>
@@ -21,6 +21,23 @@
 <script lang="ts" setup>
 import ChildComponent from './ChildComponent.vue';
 import { ref, onMounted } from 'vue';
+
+/*const lazyOptions = ref({
+    src: 'https://picsum.photos/4000/2000',
+    delay: 500,
+    lifecycle: {
+        loading: (el) =>{
+            console.log('loading', el)
+        },
+        error: (el) => {
+            console.log('error', el)
+        },
+        loaded: (el) => {
+            console.log('loaded', el)
+        }
+    }
+}); */
+
 const percentageComponent = ref(null);
 const percentage = ref(0);
 const tasksCompleted = ref(0);
