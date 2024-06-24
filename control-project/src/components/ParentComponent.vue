@@ -1,5 +1,13 @@
 <template>
     <div>
+
+        <img alt="Lorem picsum big picture to understand how v-lazy works" width="500" height="auto" v-lazy="{
+            src: 'https://picsum.photos/4000/2000',
+            error: 'notfound.png',
+            loading: 'loading.gif',
+            delay: 500
+        }">
+
         <ChildComponent ref="percentageComponent"></ChildComponent>
 
         <button id="cuenta-bancaria" @click="finishTask('cuenta bancaria', 'cuenta-bancaria')">Añadir Cuenta Bancaria</button>
@@ -38,3 +46,20 @@ const updatePercentage = () => {
     percentageComponent.value.recalculate(percentage.value);
 }
 </script>
+
+<style scoped>
+
+
+img[lazy=loading] {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+}
+
+img[lazy=error] {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+</style>
