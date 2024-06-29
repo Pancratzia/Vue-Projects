@@ -1,6 +1,7 @@
-import { createApp } from 'vue'
+import { createApp, provide, h } from 'vue'
 import App from './App.vue'
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core';
+import { DefaultApolloClient } from '@vue/apollo-composable';
 
 
 const httpLink = createHttpLink({
@@ -9,7 +10,6 @@ const httpLink = createHttpLink({
 
 const cache = new InMemoryCache();
 
-const app = createApp(App);
 
 const apolloClient = new ApolloClient({
     link: httpLink,
@@ -17,4 +17,9 @@ const apolloClient = new ApolloClient({
 });
 
 
-app.mount('#app')
+createApp({
+    setup() {
+        provide(DefaultApolloClient, apolloClient);
+    },
+    render: () => h(App)
+}).mount('#app')
